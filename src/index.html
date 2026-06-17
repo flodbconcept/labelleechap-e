@@ -51,7 +51,7 @@
     font-weight:500;padding:8px 14px;border-radius:999px;white-space:nowrap;transition:.2s;
   }
   nav a:hover{background:var(--sand-deep);color:var(--ink)}
-  #lang-toggle{flex:none;margin-left:auto;border:1.5px solid var(--terracotta);background:transparent;color:var(--terracotta);font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;padding:6px 13px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.2s}
+  #lang-toggle{flex:none;margin-right:auto;border:1.5px solid var(--terracotta);background:transparent;color:var(--terracotta);font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;padding:6px 13px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.2s}
   #lang-toggle:hover{background:var(--terracotta);color:#fff}
   /* ---------- Layout ---------- */
   main{max-width:760px;margin:0 auto;padding:48px 22px 90px}
@@ -178,6 +178,7 @@
 </header>
 
 <nav>
+  <button id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">🇬🇧 EN</button>
   <a href="#accueil" data-i18n="nav.accueil">Infos rapides</a>
   <a href="#maison" data-i18n="nav.maison">La maison</a>
   <a href="#piscine" data-i18n="nav.piscine">Piscine</a>
@@ -186,7 +187,6 @@
   <a href="#roadtrips" data-i18n="nav.roadtrips">Road trips</a>
   <a href="#pratique" data-i18n="nav.pratique">Infos pratiques</a>
   <a href="#depart" data-i18n="nav.depart">Départ</a>
-  <button id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">🇬🇧 EN</button>
 </nav>
 
 <main>
