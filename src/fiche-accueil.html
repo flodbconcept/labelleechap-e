@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>La Belle Échappée — Fiche d'accueil</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Outfit:wght@400;600&display=swap');
+
+  :root {
+    --terracotta: #c4633f;
+    --encre: #2b2b2b;
+    --sable: #fbf7f0;
+    --eau: #3a7a8c;
+    --line: #e0d8cc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: white;
+    color: var(--encre);
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 14mm 16mm;
+  }
+
+  /* ---- ENTÊTE ---- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--terracotta);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+
+  header .titre h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    color: var(--terracotta);
+    line-height: 1.1;
+  }
+
+  header .titre p {
+    font-size: 12px;
+    color: #777;
+    margin-top: 2px;
+  }
+
+  /* ---- QR CODE ---- */
+  .qr-block {
+    text-align: center;
+  }
+
+  .qr-block canvas, .qr-block img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .qr-block p {
+    font-size: 9px;
+    color: #888;
+    margin-top: 3px;
+  }
+
+  /* ---- GRILLE 2 COL ---- */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .grid.three {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* ---- CARTE ---- */
+  .card {
+    background: var(--sable);
+    border-radius: 8px;
+    padding: 10px 12px;
+    border-left: 4px solid var(--terracotta);
+  }
+
+  .card.eau { border-left-color: var(--eau); }
+
+  .card h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    color: var(--terracotta);
+    margin-bottom: 7px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  .card.eau h2 { color: var(--eau); }
+
+  .card ul {
+    list-style: none;
+    font-size: 11.5px;
+    line-height: 1.7;
+  }
+
+  .card ul li {
+    display: flex;
+    gap: 6px;
+    border-bottom: 1px dashed var(--line);
+    padding: 3px 0;
+  }
+
+  .card ul li:last-child { border-bottom: none; }
+
+  .card ul li .k {
+    flex: 0 0 110px;
+    font-weight: 600;
+    color: var(--encre);
+  }
+
+  .card ul li .v { flex: 1; color: #444; }
+
+  /* ---- CHECKLIST ---- */
+  .checklist {
+    list-style: none;
+    font-size: 11.5px;
+    line-height: 1.8;
+    columns: 2;
+    column-gap: 16px;
+  }
+
+  .checklist li::before {
+    content: "☐ ";
+    color: var(--terracotta);
+    font-size: 13px;
+  }
+
+  /* ---- NOTE ---- */
+  .note {
+    font-size: 10.5px;
+    background: #fff3cd;
+    border-left: 3px solid #f0a500;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-top: 10px;
+    color: #555;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    margin-top: 16px;
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: #aaa;
+  }
+
+  footer a { color: var(--eau); text-decoration: none; }
+
+  @media print {
+    body { margin: 0; padding: 14mm 16mm; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ENTÊTE -->
+<header>
+  <div class="titre">
+    <h1>La Belle Échappée</h1>
+    <p>Beaufays / Trooz — Votre fiche d'accueil</p>
+  </div>
+  <div class="qr-block">
+    <div id="qr"></div>
+    <p>Guide complet en ligne</p>
+  </div>
+</header>
+
+<!-- LIGNE 1 : WiFi + Contacts + Horaires -->
+<div class="grid three">
+
+  <div class="card">
+    <h2>📶 WiFi</h2>
+    <ul>
+      <li><span class="k">Réseau</span><span class="v">Proximus-Home-7488</span></li>
+      <li><span class="k">Mot de passe</span><span class="v">wkxakd77y9rfa</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>📞 Contact hôte</h2>
+    <ul>
+      <li><span class="k">Téléphone</span><span class="v">+32 486 92 71 40</span></li>
+      <li><span class="k">WhatsApp</span><span class="v">+32 496 43 59 58</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🕐 Horaires</h2>
+    <ul>
+      <li><span class="k">Arrivée</span><span class="v">à partir de 16h</span></li>
+      <li><span class="k">Départ</span><span class="v">avant 11h</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- LIGNE 2 : Infos pratiques + Poubelles -->
+<div class="grid">
+
+  <div class="card eau">
+    <h2>🚨 Urgences & contacts</h2>
+    <ul>
+      <li><span class="k">Urgences</span><span class="v">112</span></li>
+      <li><span class="k">Médecin</span><span class="v">Espace Santé La Rotonde — ☎ 04 257 42 92</span></li>
+      <li><span class="k">Pharmacie</span><span class="v">Marcourt Beaufays — ☎ 04 368 76 64</span></li>
+      <li><span class="k">Hôpital</span><span class="v">CHU de Liège — Sart Tilman</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🗑️ Poubelles & tri</h2>
+    <ul>
+      <li><span class="k">Bac jaune</span><span class="v">carton — près du garage</span></li>
+      <li><span class="k">Bac noir</span><span class="v">ordures ménagères — près du garage</span></li>
+      <li><span class="k">Bac vert</span><span class="v">compost — à côté du garage</span></li>
+      <li><span class="k">Sac bleu</span><span class="v">plastiques — près du garage</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- LIGNE 3 : Piscine + Cuisine -->
+<div class="grid">
+
+  <div class="card eau">
+    <h2>🏊 Piscine</h2>
+    <ul>
+      <li><span class="k">Bouées</span><span class="v">ranger dans le bar en cas de vent</span></li>
+      <li><span class="k">Essuies</span><span class="v">essuies et couvre-transat dans le bar</span></li>
+      <li><span class="k">Musique</span><span class="v">Bluetooth, éviter le fort après 22h</span></li>
+      <li><span class="k">Enfants</span><span class="v">surveiller en permanence, pas de plongeon</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🍳 Cuisine</h2>
+    <ul>
+      <li><span class="k">Lave-vaisselle</span><span class="v">pastilles sous l'évier</span></li>
+      <li><span class="k">Machine à café</span><span class="v">capsules disponibles</span></li>
+      <li><span class="k">Four & plaques</span><span class="v">notice dans le tiroir</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- AVANT DE PARTIR -->
+<div class="card" style="margin-bottom:12px; border-left-color: var(--eau);">
+  <h2 style="color:var(--eau)">✅ Avant de partir</h2>
+  <ul class="checklist">
+    <li>Sortir les poubelles et le tri</li>
+    <li>Faire la vaisselle / lancer le lave-vaisselle</li>
+    <li>Mettre les essuies de bain dans la baignoire</li>
+    <li>Ne pas défaire les lits (nous le ferons)</li>
+    <li>Éteindre les lumières</li>
+    <li>Fermer les fenêtres</li>
+    <li>Laisser les clés sur la table de l'entrée</li>
+  </ul>
+</div>
+
+<div class="note">
+  💡 Retrouvez le guide complet (courses, balades, road trips, piscine…) en scannant le QR code ou sur <strong>labelleechap-e-9le1.vercel.app</strong>
+</div>
+
+<footer>
+  <span>La Belle Échappée — Beaufays / Trooz</span>
+  <a href="https://labelleechap-e-9le1.vercel.app">labelleechap-e-9le1.vercel.app</a>
+</footer>
+
+<!-- QR Code via bibliothèque CDN -->
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>
+  new QRCode(document.getElementById("qr"), {
+    text: "https://labelleechap-e-9le1.vercel.app",
+    width: 90,
+    height: 90,
+    colorDark: "#2b2b2b",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+</script>
+
+</body>
+</html>
