@@ -146,11 +146,10 @@
     .quick .val{font-size:1.1rem}
     .quick .val.small{font-size:.95rem}
 
-    /* Listes kv : label au-dessus de la valeur sur mobile */
-    ul.clean li.kv{flex-direction:column;gap:1px}
-    ul.clean li.kv span.k{flex:none;width:100%;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
-    ul.clean li.kv span.k::after{content:none}
-    ul.clean li.kv span.v{font-size:.97rem}
+    /* Listes kv : colonne label réduite sur mobile */
+    ul.clean li.kv{flex-direction:row}
+    ul.clean li.kv span.k{flex:0 0 38%;font-size:.82rem;color:var(--ink-soft);min-width:0;word-break:break-word}
+    ul.clean li.kv span.v{flex:1;min-width:0;font-size:.9rem}
 
     /* Carte */
     .map{height:240px}
