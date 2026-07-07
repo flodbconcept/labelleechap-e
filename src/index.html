@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bienvenue à la Belle Échappée</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c4633f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Belle Échappée">
+<link rel="apple-touch-icon" href="icon.svg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c4633f'/%3E%3C!-- soleil --%3E%3Ccircle cx='32' cy='22' r='8' fill='%23fff' opacity='.95'/%3E%3Cline x1='32' y1='9' x2='32' y2='6' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='32' y1='38' x2='32' y2='35' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='19' y1='22' x2='16' y2='22' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='48' y1='22' x2='45' y2='22' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='23' y1='13' x2='21' y2='11' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='43' y1='33' x2='41' y2='31' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='41' y1='13' x2='43' y2='11' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='21' y1='33' x2='23' y2='31' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3C!-- vague --%3E%3Cpath d='M10 50 Q18 44 26 50 Q34 56 42 50 Q50 44 58 50' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round' opacity='.85'/%3E%3Cpath d='M10 57 Q18 51 26 57 Q34 63 42 57 Q50 51 58 57' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' opacity='.5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +60,10 @@
   nav a:hover{background:var(--sand-deep);color:var(--ink)}
   #lang-toggle{flex:none;margin-right:auto;border:1.5px solid var(--terracotta);background:transparent;color:var(--terracotta);font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;padding:6px 13px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.2s}
   #lang-toggle:hover{background:var(--terracotta);color:#fff}
+  #install-btn{display:none;flex:none;align-items:center;gap:6px;border:none;background:var(--terracotta);color:#fff;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;padding:6px 13px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.2s}
+  #install-btn:hover{opacity:.85}
+  #ios-hint{display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#2b2b2b;color:#fff;font-size:.82rem;padding:12px 18px;border-radius:12px;text-align:center;z-index:999;max-width:280px;line-height:1.5;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+  #ios-hint button{margin-top:8px;display:block;width:100%;background:var(--terracotta);color:#fff;border:none;border-radius:8px;padding:6px;font-size:.82rem;cursor:pointer}
   /* ---------- Layout ---------- */
   main{max-width:760px;margin:0 auto;padding:48px 22px 90px}
   section{margin-bottom:56px;scroll-margin-top:70px}
@@ -180,6 +190,7 @@
 
 <nav>
   <button id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">🇬🇧 EN</button>
+  <button id="install-btn" aria-label="Installer l'application">⬇ Installer</button>
   <a href="#accueil" data-i18n="nav.accueil">Infos rapides</a>
   <a href="#maison" data-i18n="nav.maison">La maison</a>
   <a href="#piscine" data-i18n="nav.piscine">Piscine</a>
@@ -760,6 +771,50 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const init = param || saved;
   if(init && init !== 'fr') applyLang(init);
 });
+
+// --- PWA Install ---
+let deferredPrompt = null;
+const installBtn = document.getElementById('install-btn');
+
+// Android / Chrome : on capte l'événement beforeinstallprompt
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = 'flex';
+});
+
+installBtn.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    installBtn.style.display = 'none';
+  } else if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
+    // iOS : afficher les instructions manuelles
+    document.getElementById('ios-hint').style.display = 'block';
+  }
+});
+
+// iOS : détecter et afficher le bouton même sans beforeinstallprompt
+if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !navigator.standalone) {
+  installBtn.style.display = 'flex';
+}
+
+window.addEventListener('appinstalled', () => {
+  installBtn.style.display = 'none';
+});
+
+// Service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
 </script>
+
+<div id="ios-hint">
+  Pour installer l'app :<br>
+  Appuyez sur <strong>⬆ Partager</strong><br>puis <strong>« Sur l'écran d'accueil »</strong>
+  <button onclick="document.getElementById('ios-hint').style.display='none'">Fermer</button>
+</div>
+
 </body>
 </html>

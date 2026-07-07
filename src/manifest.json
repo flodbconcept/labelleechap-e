@@ -1,0 +1,17 @@
+{
+  "name": "La Belle Échappée",
+  "short_name": "Belle Échappée",
+  "description": "Guide d'accueil de votre séjour à Beaufays",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf7f0",
+  "theme_color": "#c4633f",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
