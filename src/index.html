@@ -212,7 +212,8 @@
       <h3 data-i18n="maison.cuisine.h3">Cuisine & électroménager</h3>
       <ul class="clean">
         <li class="kv"><span class="k" data-i18n="maison.lv.k">Lave-vaisselle</span><span class="v" data-i18n="maison.lv.v">pastilles sous l'évier, bouton départ en façade.</span></li>
-        <li class="kv"><span class="k" data-i18n="maison.cafe.k">Machine à café</span><span class="v" data-i18n="maison.cafe.v">capsules.</span></li>
+        <li class="kv"><span class="k" data-i18n="maison.cafe.k">Machine à café</span><span class="v"><a href="mode-emploi-cafe.pdf" target="_blank" style="color:var(--terracotta);font-weight:600">📄 Mode d'emploi ↗</a></span></li>
+        <li class="kv"><span class="k" data-i18n="maison.laveL.k">Lave-linge</span><span class="v"><a href="mode-emploi-lave-linge.pdf" target="_blank" style="color:var(--terracotta);font-weight:600">📄 Mode d'emploi ↗</a></span></li>
         <li class="kv"><span class="k" data-i18n="maison.four.k">Four & plaques</span><span class="v" data-i18n="maison.four.v">notice dans le tiroir.</span></li>
         <li class="kv"><span class="k" data-i18n="maison.dispo.k">À votre disposition</span><span class="v" data-i18n="maison.dispo.v">grille-pain, appareil à croque-monsieur, mixeur à soupe, air fryer (fondu sur le côté), machine à café, bouilloire, hachoir électrique, plaque à pancakes.</span></li>
       </ul>
@@ -418,8 +419,8 @@
         <li><input type="checkbox"><span data-i18n="depart.c3">Éteindre les lumières.</span></li>
         <li><input type="checkbox"><span data-i18n="depart.c4">Fermer les fenêtres.</span></li>
         <li><input type="checkbox"><span data-i18n="depart.c5">Mettre tous les essuies de bain dans la baignoire.</span></li>
-        <li><input type="checkbox"><span data-i18n="depart.c6">Ne pas défaire les lits, nous le ferons.</span></li>
-        <li><input type="checkbox"><span data-i18n="depart.c7">Laisser les clés sur la table de l'entrée.</span></li>
+        <li><input type="checkbox"><span data-i18n="depart.c6">Défaire le linge de lit et le mettre au pied du lit.</span></li>
+        <li><input type="checkbox"><span data-i18n="depart.c7">Laisser la clé dans la boîte à clé.</span></li>
       </ul>
       <div class="note" data-i18n="depart.note">Merci pour votre séjour — nous espérons que vous avez passé un agréable moment !</div>
     </div>
@@ -527,7 +528,7 @@ const TRANSLATIONS = {
     'accueil.contact.lbl':'Contact hôte','accueil.urgences.lbl':'Urgences',
     'maison.h2':'La maison','maison.cuisine.h3':'Cuisine & électroménager',
     'maison.lv.k':'Lave-vaisselle','maison.lv.v':'pastilles sous l\'évier, bouton départ en façade.',
-    'maison.cafe.k':'Machine à café','maison.cafe.v':'capsules.',
+    'maison.cafe.k':'Machine à café','maison.laveL.k':'Lave-linge',
     'maison.four.k':'Four & plaques','maison.four.v':'notice dans le tiroir.',
     'maison.dispo.k':'À votre disposition','maison.dispo.v':'grille-pain, appareil à croque-monsieur, mixeur à soupe, air fryer (fondu sur le côté), machine à café, bouilloire, hachoir électrique, plaque à pancakes.',
     'maison.poubelles.h3':'Poubelles & tri',
@@ -597,8 +598,8 @@ const TRANSLATIONS = {
     'depart.c1':'Sortir les poubelles et le tri.','depart.c2':'Faire la vaisselle ou lancer le lave-vaisselle.',
     'depart.c3':'Éteindre les lumières.','depart.c4':'Fermer les fenêtres.',
     'depart.c5':'Mettre tous les essuies de bain dans la baignoire.',
-    'depart.c6':'Ne pas défaire les lits, nous le ferons.',
-    'depart.c7':'Laisser les clés sur la table de l\'entrée.',
+    'depart.c6':'Défaire le linge de lit et le mettre au pied du lit.',
+    'depart.c7':'Laisser la clé dans la boîte à clé.',
     'depart.note':'Merci pour votre séjour — nous espérons que vous avez passé un agréable moment !',
     'footer.text':'Guide réalisé avec','footer.text2':'pour nos voyageurs.',
   },
@@ -616,7 +617,7 @@ const TRANSLATIONS = {
     'accueil.contact.lbl':'Host contact','accueil.urgences.lbl':'Emergencies',
     'maison.h2':'The house','maison.cuisine.h3':'Kitchen & appliances',
     'maison.lv.k':'Dishwasher','maison.lv.v':'tablets under the sink, start button on the front.',
-    'maison.cafe.k':'Coffee machine','maison.cafe.v':'capsules available.',
+    'maison.cafe.k':'Coffee machine','maison.laveL.k':'Washing machine',
     'maison.four.k':'Oven & hob','maison.four.v':'manual in the drawer.',
     'maison.dispo.k':'At your disposal','maison.dispo.v':'toaster, sandwich maker, soup blender, air fryer (stored on its side), coffee machine, kettle, electric chopper, pancake griddle.',
     'maison.poubelles.h3':'Bins & recycling',
@@ -686,8 +687,8 @@ const TRANSLATIONS = {
     'depart.c1':'Take out the bins and recycling.','depart.c2':'Do the dishes or run the dishwasher.',
     'depart.c3':'Turn off the lights.','depart.c4':'Close the windows.',
     'depart.c5':'Put all bath towels in the bathtub.',
-    'depart.c6':'Leave the beds as they are — we will take care of them.',
-    'depart.c7':'Leave the keys on the entrance table.',
+    'depart.c6':'Strip the bed linen and leave it at the foot of the bed.',
+    'depart.c7':'Leave the key in the key box.',
     'depart.note':'Thank you for your stay — we hope you had a wonderful time!',
     'footer.text':'Made with','footer.text2':'for our guests.',
   }
